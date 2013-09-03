@@ -1,4 +1,3 @@
-
 AddCSLuaFile("cl_damagelog.lua")
 AddCSLuaFile("cl_tabs/damagetab.lua")
 AddCSLuaFile("cl_tabs/settings.lua")
@@ -159,7 +158,13 @@ function Damagelog:SendDamagelog(ply, round)
 		net.Start("DL_InformSuperAdmins")
 		net.WriteString(ply:Nick())
 		net.WriteUInt(round, 8)
-		net.Send(superadmins)
+		if self.AbuseMessageMode == 1 then
+			net.Send(superadmins)
+		elseif self.AbuseMessageMode == 2 then
+			net.Broadcast()
+		else
+			net.Send({})
+		end
 	end
 end
 net.Receive("DL_AskDamagelog", function(_, ply)
@@ -179,4 +184,5 @@ hook.Add("PlayerDeath", "Damagelog_PlayerDeathLastLogs", function(ply)
 		end
 		ply.DeathDmgLog[Damagelog.CurrentRound] = found_dmg
 	end
-end)	
+end)
+	
