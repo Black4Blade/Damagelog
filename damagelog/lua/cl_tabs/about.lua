@@ -1,6 +1,5 @@
-
 -- inb4 half of the servers removing this entire tab, credits or the donate button
--- really nice after all the time I spent working on it
+-- really nice after all the time I spent working on the menu
 
 surface.CreateFont("DL_About_Title", {
 	font = "DermaLarge",
