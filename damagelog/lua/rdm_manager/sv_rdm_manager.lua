@@ -172,7 +172,7 @@ net.Receive("RDMRespond", function(len, ply)
 			table.remove(Damagelog.rdmReporter.respond[steamID], index);
 			Damagelog.rdmReporter.stored[respond.report].attackerMessage = message;
 			Damagelog.rdmReporter:SendAdmin(nil, respond.report, true);
-			Damagelog.notify:AddMessage("admin", "A respond has been submitted!", "icon16/error.png", "ui/vote_yes.wav");
+			Damagelog.notify:AddMessage("admin", "A response has been submitted!", "icon16/error.png", "ui/vote_yes.wav");
 		end;
 	end;
 end);

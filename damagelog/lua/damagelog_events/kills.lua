@@ -25,7 +25,7 @@ function event:DoPlayerDeath(ply, attacker, dmginfo)
 		} 
 		self.CallEvent(tbl)
 		net.Start("DL_Ded")
-		if Damagelog:IsTeamkill(tbl[2], tbl[4]) then
+		if not tbl[2] == ROLE_TRAITOR and (tbl[4] == ROLE_INNOCENT or tbl[4] == ROLE_DETECTIVE) then
 			net.WriteUInt(1,1)
 			net.WriteString(tbl[1])
 		else

@@ -68,7 +68,7 @@ function Damagelog:AddLogsLine(listview, tbl, nofilters, old)
 	if type(tbl) != "table" then return end
 	local infos = self.events[tbl.id]
 	if not infos then return end
-	if nofilters and not infos:IsAllowed(tbl.infos) then return end
+	if not nofilters and not infos:IsAllowed(tbl.infos) then return end
 	local text = infos:ToString(tbl.infos)
 	local item = listview:AddLine(util.SimpleTime(tbl.time, "%02i:%02i"), infos.Type, text, "")
 	if tbl.infos.icon then
@@ -79,7 +79,7 @@ function Damagelog:AddLogsLine(listview, tbl, nofilters, old)
 			image:SetPos(6, 1)
 		end
 		if tbl.infos.icon[2] then
-			item:SetTooltip("The victim may have shot first (see damage informations for more infos!)")
+			item:SetTooltip("The victim may have shot first (see the damage informations section for more info!)")
 		end
 	end
 	function item:PaintOver()
