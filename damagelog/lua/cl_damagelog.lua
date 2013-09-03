@@ -98,7 +98,7 @@ net.Receive("DL_Ded", function()
 		frame:Center()
 	
 		local reason = vgui.Create("DLabel", frame)
-		reason:SetText("You were teamkilled by "..death_reason)
+		reason:SetText("You were killed by "..death_reason)
 		reason:SizeToContents()
 		reason:SetPos(5, 32)
 	
