@@ -159,7 +159,13 @@ function Damagelog:SendDamagelog(ply, round)
 		net.Start("DL_InformSuperAdmins")
 		net.WriteString(ply:Nick())
 		net.WriteUInt(round, 8)
-		net.Send(superadmins)
+		if Damagelog.AbuseMessageMode == 1 then
+			net.Send(superadmins)
+		elseif Damagelog.AbuseMessageMode == 2 then
+			net.Broadcast()
+		else
+			net.Send({})
+		end
 	end
 end
 net.Receive("DL_AskDamagelog", function(_, ply)
